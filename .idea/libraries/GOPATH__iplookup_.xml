@@ -26,7 +26,7 @@
       <root url="file:///usr/local/go/path/src/github.com/codegangsta/inject/.git" />
       <root url="file:///usr/local/go/path/src/github.com/smartystreets/assertions/internal/oglemock/generate/testdata" />
       <root url="file:///usr/local/go/path/src/github.com/astaxie/beego/utils/testdata" />
-      <root url="file://$PROJECT_DIR$/iplookup" />
+      <root url="file://$PROJECT_DIR$/src/iplookup" />
       <root url="file:///usr/local/go/path/src/github.com/smartystreets/assertions/internal/oglemock/createmock/testdata" />
       <root url="file:///usr/local/go/path/src/github.com/miekg/dns/.git" />
       <root url="file:///usr/local/go/path/src/github.com/cihub/seelog/.git" />
