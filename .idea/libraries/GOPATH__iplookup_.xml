@@ -1,0 +1,47 @@
+<component name="libraryTable">
+  <library name="GOPATH &lt;iplookup&gt;">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../src/.idea" />
+      <root url="file://$PROJECT_DIR$/../src/httpDispacher-develop" />
+      <root url="file://$PROJECT_DIR$/../src/.DS_Store" />
+      <root url="file://$PROJECT_DIR$/../src/iplookup" />
+      <root url="file://$PROJECT_DIR$/../src/httpDns" />
+      <root url="file:///usr/local/go/path/src/launchpad.net" />
+      <root url="file://$PROJECT_DIR$/../src/edns" />
+      <root url="file://$PROJECT_DIR$/../src/regionToIP" />
+      <root url="file:///usr/local/go/path/src/github.com" />
+      <root url="file://$PROJECT_DIR$/../../beetest/src/quickstart" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <excluded>
+      <root url="file:///usr/local/go/path/src/github.com/howeyc/fsnotify/.git" />
+      <root url="file:///usr/local/go/path/src/github.com/astaxie/beego/.git" />
+      <root url="file:///usr/local/go/path/src/github.com/codegangsta/martini-contrib/.git" />
+      <root url="file://$PROJECT_DIR$/../src/iplookup/.idea" />
+      <root url="file://$PROJECT_DIR$/../src/edns/.idea" />
+      <root url="file:///usr/local/go/path/src/github.com/jtolds/gls/.git" />
+      <root url="file:///usr/local/go/path/src/github.com/beego/bee/testdata" />
+      <root url="file://$PROJECT_DIR$/../src/regionToIP/.idea" />
+      <root url="file:///usr/local/go/path/src/github.com/codegangsta/inject/.git" />
+      <root url="file:///usr/local/go/path/src/github.com/smartystreets/assertions/internal/oglemock/generate/testdata" />
+      <root url="file:///usr/local/go/path/src/github.com/astaxie/beego/utils/testdata" />
+      <root url="file://$PROJECT_DIR$/iplookup" />
+      <root url="file:///usr/local/go/path/src/github.com/smartystreets/assertions/internal/oglemock/createmock/testdata" />
+      <root url="file:///usr/local/go/path/src/github.com/miekg/dns/.git" />
+      <root url="file:///usr/local/go/path/src/github.com/cihub/seelog/.git" />
+      <root url="file:///usr/local/go/path/src/github.com/beego/bee/.git" />
+      <root url="file://$PROJECT_DIR$" />
+      <root url="file:///usr/local/go/path/src/github.com/go-sql-driver/mysql/.git" />
+      <root url="file://$PROJECT_DIR$/../src/.idea" />
+      <root url="file:///usr/local/go/path/src/github.com/smartystreets/assertions/.git" />
+      <root url="file:///usr/local/go/path/src/github.com/codegangsta/martini/.git" />
+      <root url="file:///usr/local/go/path/src/github.com/hoisie/web/.git" />
+      <root url="file:///usr/local/go/path/src/github.com/garyburd/redigo/.git" />
+      <root url="file:///usr/local/go/path/src/github.com/smartystreets/goconvey/.git" />
+      <root url="file:///usr/local/go/path/src/github.com/lib/pq/.git" />
+      <root url="file:///usr/local/go/path/src/github.com/yasushi-saito/rbtree/.git" />
+      <root url="file://$PROJECT_DIR$/../src/httpDns/.idea" />
+    </excluded>
+  </library>
+</component>
