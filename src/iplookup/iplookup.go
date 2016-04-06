@@ -64,15 +64,11 @@ func InitIpNet(){
 		ipNetArray[i].Type = tempArr[8]
 		ipNetArray[i].Desc = tempArr[9]
 	}
-
 	sort.Sort(ipNetArray)
-
 }
 
 
 func FindIpNet(ip int64)IpNet{
-
 	index := sort.Search(len(ipNetArray), func(i int) bool { return ipNetArray[i].StopIP >= ip })
-
 	return ipNetArray[index]
 }
