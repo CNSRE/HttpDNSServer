@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/HttpDNSServer.iml" filepath="$PROJECT_DIR$/HttpDNSServer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/InitDB/InitDB.iml" filepath="$PROJECT_DIR$/InitDB/InitDB.iml" />
+      <module fileurl="file://$PROJECT_DIR$/initdb/InitDB.iml" filepath="$PROJECT_DIR$/initdb/InitDB.iml" />
     </modules>
   </component>
 </project>
