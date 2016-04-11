@@ -65,6 +65,11 @@ func InitIpNet(){
 		ipNetArray[i].Desc = tempArr[9]
 	}
 	sort.Sort(ipNetArray)
+
+//	for i , v := range ipNetArray {
+//		fmt.Println( i , "=" , v )
+//	}
+
 }
 
 

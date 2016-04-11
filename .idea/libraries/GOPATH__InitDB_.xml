@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="GOPATH &lt;HttpDNSServer&gt;">
+  <library name="GOPATH &lt;InitDB&gt;">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/../src/.idea" />
       <root url="file://$PROJECT_DIR$/../src/httpDispacher-develop" />
