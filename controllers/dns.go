@@ -3,8 +3,7 @@ package controllers
 
 import (
 	"github.com/astaxie/beego"
-	"../util"
-	"../models"
+	"../models/dns"
 )
 
 type DnsController struct {
@@ -13,21 +12,10 @@ type DnsController struct {
 
 func (c *DnsController) Get() {
 
-	domain := c.GetString("domain")
-	if len(domain) == 0 {
-		c.Ctx.WriteString("domain err")
+	data , err := dns.Find( c.GetString("domain") , c.GetString("ip") , c.Ctx.Input.IP() )
+	if err != nil {
+		//终止程序, 记录log. 返回对应的错误信息
 	}
-
-	ip := c.GetString("ip")
-	if( len(ip) == 0 ){
-		ip = c.Ctx.Input.IP()
-	}
-
-	longIp := util.IpStr2Long(ip)
-	regIp := models.NewRegionIP(domain ,longIp)
-	domainDns := models.NewDomainDNS( domain , regIp.ID )
-	ipInfo := models.NewIpInfo(regIp.ID)
-	data := models.NewdataModel( domain , ip , ipInfo.Isp , domainDns.A )
 
 	c.Data["json"] = &data
 	c.ServeJSON()
