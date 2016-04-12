@@ -6,5 +6,5 @@ import (
 )
 
 func init() {
-	beego.Router("/d", &controllers.DnsController{})
+	beego.Router("/dns", &controllers.DnsController{})
 }

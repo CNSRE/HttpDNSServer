@@ -10,7 +10,7 @@ import (
 	"sort"
 )
 
-var REDIS_SERVER_IP = "127.0.0.1:6379"
+
 
 type IpNet struct {
 	ID       int    //id编号
@@ -30,6 +30,7 @@ type IpNet struct {
 func (p IpNet) String() string {
 	str := ""
 	str += strconv.Itoa(p.ID) + ","
+	str += p.IP + ","
 	str += strconv.FormatInt(p.StartIP, 10) + ","
 	str += strconv.FormatInt(p.StopIP, 10) + ","
 	str += strconv.Itoa(p.Country) + ","
@@ -57,7 +58,7 @@ func (p IpNetArray) Swap(i, j int) {
 }
 
 
-var filename = "res/ip.db"
+var filename = "./AInitDB/db/ip.db"
 
 func InitIpNet() {
 
@@ -98,30 +99,20 @@ func InitIpNet() {
 func main() {
 	InitIpNet()
 	redisDial();
-	defer cli.Close()
+
 
 	delDB_ip_info()
 	insertDB_ip_info()
 	printAll_ip_info()
 
 
-	delDB_region_ip()
-	insertDB_region_ip()
-	printAll_region_ip()
+//	delDB_region_ip()
+//	insertDB_region_ip()
+//	printAll_region_ip()
 
+
+	redisClose()
 }
-
-var cli redis.Conn = nil
-
-func redisDial() {
-	var err error
-	cli, err = redis.Dial("tcp", config.REDIS_SERVER_IP )
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-}
-
 
 func insertDB_ip_info() {
 	for i, v := range ipNetArray {
