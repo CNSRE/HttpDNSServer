@@ -42,6 +42,8 @@ type dnsModel struct {
 	TTL      string `json:"ttl"`
 }
 
+var domainStr = "api.weibo.cn"
+
 
 func main() {
 
@@ -61,24 +63,24 @@ func main() {
 
 		ipinfo := MakeIpInfo(v1[i])
 
-		jsonStr := httpGet("api.weibo.cn", LongStr2IP(ipinfo.StartIP))
+		jsonStr := httpGet(domainStr, LongStr2IP(ipinfo.StartIP))
 
 		if len(jsonStr) < 10 {
-			fmt.Println("err jsonStr: ", "api.weibo.cn " , ipinfo.StartIP,  jsonStr)
+			fmt.Println("err jsonStr: ", domainStr , ipinfo.StartIP,  jsonStr)
 			l.PushBack(ipinfo.ID)
 			continue
 		}
 
 		obj := json2Obj(jsonStr);
 
-		if len(obj.Domain) != len("api.weibo.cn") {
-			fmt.Println("\n\n err obj.Domain: ", "api.weibo.cn " , ipinfo.StartIP,  jsonStr , "\n\n")
+		if len(obj.Domain) != len(domainStr) {
+			fmt.Println("\n\n err obj.Domain: ", domainStr , ipinfo.StartIP,  jsonStr , "\n\n")
 			l.PushBack(ipinfo)
 			continue
 		}
 
 		if len(obj.Device_ip) < 7 {
-			fmt.Println("\n\n err obj.Device_ip: ", "api.weibo.cn " , ipinfo.StartIP,  jsonStr , "\n\n")
+			fmt.Println("\n\n err obj.Device_ip: ", domainStr , ipinfo.StartIP,  jsonStr , "\n\n")
 			l.PushBack(ipinfo)
 			continue
 		}
@@ -90,20 +92,20 @@ func main() {
 			}
 			dnsStr += obj.DNS[0].TTL
 		}else{
-			dnsStr = dnsPodHttpGet("api.weibo.cn", LongStr2IP(ipinfo.StartIP))
+			dnsStr = dnsPodHttpGet(domainStr, LongStr2IP(ipinfo.StartIP))
 			dnsStr = strings.Replace(dnsStr, ";", ",", -1)
 		}
 
 
 		if len(dnsStr) == 0{
-			fmt.Println("\n\n err obj.Device_ip: ", "api.weibo.cn " , ipinfo.StartIP,  jsonStr , "\n\n")
+			fmt.Println("\n\n err obj.Device_ip: ", domainStr , ipinfo.StartIP,  jsonStr , "\n\n")
 			l.PushBack(ipinfo)
 			continue
 		}
 
-		_, err := db.Cli().Do("HMSET", "api.weibo.cn_dns" , ipinfo.ID , dnsStr )
+		_, err := db.Cli().Do("HMSET", domainStr + "_dns" , ipinfo.ID , dnsStr )
 		if err != nil {
-			fmt.Println("\n\n err redis do: ", "api.weibo.cn " , ipinfo.StartIP,  jsonStr , "\n\n")
+			fmt.Println("\n\n err redis do: ", domainStr , ipinfo.StartIP,  jsonStr , "\n\n")
 			l.PushBack(ipinfo)
 		}
 
