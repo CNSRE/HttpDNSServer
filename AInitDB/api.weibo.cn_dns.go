@@ -83,25 +83,29 @@ func main() {
 			continue
 		}
 
-		if len(obj.DNS) < 1 {
-			fmt.Println("\n\n err obj.DNS: ", "api.weibo.cn " , ipinfo.StartIP,  jsonStr , "\n\n")
+		dnsStr := ""
+		if len(obj.DNS) >= 1 {
+			for j := 0 ; j < len( obj.DNS ) ; j++{
+				dnsStr += obj.DNS[j].IP + ","
+			}
+			dnsStr += obj.DNS[0].TTL
+		}else{
+			dnsStr = dnsPodHttpGet("api.weibo.cn", LongStr2IP(ipinfo.StartIP))
+			dnsStr = strings.Replace(dnsStr, ";", ",", -1)
+		}
+
+
+		if len(dnsStr) == 0{
+			fmt.Println("\n\n err obj.Device_ip: ", "api.weibo.cn " , ipinfo.StartIP,  jsonStr , "\n\n")
 			l.PushBack(ipinfo)
 			continue
 		}
-
-		dnsStr := ""
-		for j := 0 ; j < len( obj.DNS ) ; j++{
-			dnsStr += obj.DNS[j].IP + ","
-		}
-		dnsStr += obj.DNS[0].TTL
-
 
 		_, err := db.Cli().Do("HMSET", "api.weibo.cn_dns" , ipinfo.ID , dnsStr )
 		if err != nil {
 			fmt.Println("\n\n err redis do: ", "api.weibo.cn " , ipinfo.StartIP,  jsonStr , "\n\n")
 			l.PushBack(ipinfo)
 		}
-
 
 		if i % 100 == 0 {
 			fmt.Print(i, " ")
@@ -137,6 +141,24 @@ func httpGet(domain string, ip string) string {
 
 	return string(body)
 }
+
+func dnsPodHttpGet(domain string, ip string) string {
+
+	resp, err := http.Get("http://119.29.29.29/d?dn=" + domain + "&ip=" + ip)
+	if err != nil {
+		fmt.Println("err : ", domain, "+", ip)
+	}
+
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		fmt.Println("err : ", domain, "+", ip)
+	}
+
+	return string(body)
+
+}
+
 
 func json2Obj(jsonStr string) *dataModel {
 	res := &dataModel{}
