@@ -104,6 +104,7 @@
       <root url="file:///usr/local/go/src/net/testdata" />
       <root url="file:///usr/local/go/src/cmd/asm/internal/asm/testdata" />
       <root url="file:///usr/local/go/src/runtime/race/testdata" />
+      <root url="file:///usr/local/go/path/src/github.com/op/go-logging/.git" />
       <root url="file:///usr/local/go/src/crypto/tls/testdata" />
       <root url="file:///usr/local/go/src/debug/dwarf/testdata" />
       <root url="file:///usr/local/go/src/go/doc/testdata" />

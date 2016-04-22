@@ -27,7 +27,8 @@ func Find(domain, ip, userIp string) ( data dataModel, err error ){
 
 	// 正则检测是否是合法IP
 	if len( ip ) == 0 {
-		return data , fmt.Errorf( "dnsManager ip is null" )
+		ip = userIp
+		//return data , fmt.Errorf( "dnsManager ip is null" )
 	}
 
 	// iplookup 模块查询ip对应的region id

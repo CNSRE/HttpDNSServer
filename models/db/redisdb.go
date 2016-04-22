@@ -1,7 +1,6 @@
 package db
 import (
 	"github.com/garyburd/redigo/redis"
-	"fmt"
 )
 
 var cli redis.Conn = nil

@@ -4,8 +4,8 @@ package controllers
 import (
 	"github.com/astaxie/beego"
 	"../models/dns"
-	"time"
-	"fmt"
+//	"time"
+//	"fmt"
 )
 
 type DnsController struct {
