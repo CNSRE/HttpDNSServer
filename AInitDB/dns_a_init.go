@@ -42,7 +42,7 @@ type dnsModel struct {
 	TTL      string `json:"ttl"`
 }
 
-var domainStr = "api.weibo.cn"
+var domainStr = "tp4.sinaimg.cn"
 
 
 func main() {
