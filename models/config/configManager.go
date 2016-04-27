@@ -108,7 +108,7 @@ type ConfigModel struct {
 
 func Find(appkey string) ( data ConfigModel, err error ){
 
-	if strings.EqualFold(appkey, "c3596bc0a43d3c4bde184220b735cf6d"){
+	if strings.EqualFold(appkey, "18e3116aa3603d53eefe74e5f0a4ade9"){
 		data = ConfigModel{
 			"1",
 			"0",
