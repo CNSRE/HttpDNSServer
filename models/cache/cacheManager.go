@@ -13,7 +13,10 @@ type DomainDNS struct {
 
 func Find(domain, id string) (a []string, ttl string, err error) {
 
-	v1, e := redis.String(db.Cli().Do("HGET", domain + "_dns", id))
+	conn := db.Get()
+	defer conn.Close()
+
+	v1, e := redis.String(conn.Do("HGET", domain + "_dns", id))
 	if err != nil || len(v1) == 0 {
 		return nil, "", fmt.Errorf("cache find err. redis : ", e, " domain:", domain, " id:", id)
 	}

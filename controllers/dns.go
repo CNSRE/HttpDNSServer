@@ -6,6 +6,7 @@ import (
 	"../models/dns"
 //	"time"
 //	"fmt"
+	"fmt"
 )
 
 type DnsController struct {
@@ -21,6 +22,7 @@ func (c *DnsController) Get() {
 
 	if err != nil {
 		//终止程序, 记录log. 返回对应的错误信息
+		fmt.Println(err)
 	}
 
 	c.Data["json"] = &data

@@ -13,11 +13,14 @@ type RegionIP struct {
 
 func FindID(domain string, ipStr string) (string, error) {
 
+	conn := db.Get()
+	defer conn.Close()
+
 	// ip 转 int类型
 	ip := util.IpStr2Long(ipStr)
 
 	// 查询 [Domain]IP库关联ID
-	v1, err := redis.Strings(db.Cli().Do("zrangebyscore", domain + "_ip", ip, "+inf", "LIMIT", "0", "1"))
+	v1, err := redis.Strings(conn.Do("zrangebyscore", domain + "_ip", ip, "+inf", "LIMIT", "0", "1"))
 	if err != nil {
 		return "", fmt.Errorf("iplookup find id err. redis : ", err, " domain:", domain, " ip:", ipStr)
 	}
@@ -26,7 +29,7 @@ func FindID(domain string, ipStr string) (string, error) {
 	}
 
 	// 默认IP库关联ID
-	v1, err = redis.Strings(db.Cli().Do("zrangebyscore", "region_ip", ip, "+inf", "LIMIT", "0", "1"))
+	v1, err = redis.Strings(conn.Do("zrangebyscore", "region_ip", ip, "+inf", "LIMIT", "0", "1"))
 	if err != nil {
 		return "", fmt.Errorf("iplookup find id err. redis : ", err, " domain:", domain, " ip:", ipStr)
 	}

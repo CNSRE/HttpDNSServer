@@ -21,7 +21,11 @@ type IpInfo struct {
 }
 
 func FindIpInfo(id string) (ipInfo IpInfo, err error) {
-	v1, e := redis.String(db.Cli().Do("HGET", "ip_info", id))
+
+	conn := db.Get()
+	defer conn.Close()
+
+	v1, e := redis.String(conn.Do("HGET", "ip_info", id))
 	if e != nil {
 		return ipInfo, fmt.Errorf("find ip info err. redis: id:", id)
 	}
