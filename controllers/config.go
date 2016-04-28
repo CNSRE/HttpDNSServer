@@ -3,6 +3,7 @@ package controllers
 import (
 	"github.com/astaxie/beego"
 	"../models/config"
+	"fmt"
 )
 
 type ConfigController struct {
@@ -21,7 +22,10 @@ func (c *ConfigController) Get() {
 		// 错误处理
 	}
 
+	fmt.Println(appkey)
+	fmt.Println(c.GetString("version"))
+	fmt.Println(conModel)
+
 	c.Data["json"] = conModel
 	c.ServeJSON()
-
 }

@@ -112,8 +112,8 @@ func Find(appkey string) ( data ConfigModel, err error ){
 		data = ConfigModel{
 			"1",
 			"0",
-			"1", "api.dnssdk.com:8080/config",
-			"1", "3600000",
+			"1", "http://10.209.77.117:8080/config",
+			"0", "3600000",
 			"1" , []string{"http://dns.weibo.cn","http://202.108.7.232","http://221.179.190.246","http://58.63.236.228"},
 			"0", "114.114.114.114",
 			"0", "http://119.29.29.29/d?ttl=1&dn=", "22", "j2cjxCp2",
