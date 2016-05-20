@@ -3,7 +3,7 @@ package controllers
 
 import (
 	"github.com/astaxie/beego"
-	"../models/dns"
+	"../dns/dns"
 //	"time"
 //	"fmt"
 	"fmt"

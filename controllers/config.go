@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"github.com/astaxie/beego"
-	"../models/config"
+	"../dns/config"
 	"fmt"
 )
 
