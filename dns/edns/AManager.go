@@ -5,6 +5,7 @@ import (
 	"net"
 	"time"
 	"fmt"
+	"regexp"
 )
 
 func FindA(ednsModel* EDNSModel){
@@ -32,6 +33,9 @@ func findA(ednsModel* EDNSModel)(string){
 		server = ednsModel.SOA[0]
 	}else{
 		server = OPEN_DNS_SERVER
+	}
+	if dns.IsFqdn(server) {
+		server = server[0 : len(server)-1]
 	}
 	if !strings.HasSuffix(server, ":53") {
 		server += ":53"
@@ -89,4 +93,12 @@ func findA(ednsModel* EDNSModel)(string){
 	}
 
 	return domain_a
+}
+
+
+func IsIP(ip string) (b bool) {
+	if m, _ := regexp.MatchString("^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$", ip); !m {
+		return false
+	}
+	return true
 }
